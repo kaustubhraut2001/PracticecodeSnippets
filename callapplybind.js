@@ -32,9 +32,38 @@ let user2 = {
 // we can pass arguments as an array list instdae of passong it one by one
 
 
+// custom bind own bind implemetation
+
+function mybind(fn, thisobj, ...args) {
+
+    const fdd = function() {
+        return fn.apply(thisobj, args);
+    }
+    return fdd;
+
+}
+// console.log(mybind(fun, user2, "maha", "india")());
+
+
+// own call implemtation in js
+
+function call(fn, thisobj, ...args) {
+    if (fn !== 'function') {
+        throw new TypeError('not a function');
+
+    }
+
+
+
+}
+
+
+
+
+
 // fun.apply(user2, ["maha", "india"])
 
 
 // bind
-let h = fun.bind(user2, "maha", "india")
-console.log(h());
+// let h = fun.bind(user2, "maha", "india")
+// console.log(h());
