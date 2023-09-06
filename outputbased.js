@@ -98,3 +98,34 @@ const { before } = require("cheerio/lib/api/manipulation");
 // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // console.log(Math.max.apply(null, arr)); // 10
+
+
+
+// function f() {
+//     console.log(this);
+// }
+
+// let user = {
+//     g: f.bind(null)
+
+// };
+
+// user.g(); // null // it is pointing to the global object
+// // it willl return window objext
+
+
+
+
+
+// bind channing
+
+// function f() {
+//     console.log(this.name);
+// }
+
+// f = f.bind({ name: "kaus" }).bind({ name: "kaustr" });
+
+// f(); // kaus // it will not change the context of the function
+
+// functionn binding doesnot exixit in the javascript
+// it will only retun kaus as output
