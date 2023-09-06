@@ -47,17 +47,46 @@ function mybind(fn, thisobj, ...args) {
 
 // own call implemtation in js
 
-function call(fn, thisobj, ...args) {
-    if (fn !== 'function') {
-        throw new TypeError('not a function');
+// function call(fn, thisobj, ...args) {
+//     if (fn !== 'function') {
+//         throw new TypeError('not a function');
 
+//     }
+//     if (args === undefine) {
+//         args = [];
+
+//     } else if (typeof args !== 'array') {
+//         throw new TypeError('arguments should be array');
+
+//     }
+//     const d = fn.apply(thisobj, args);
+
+//     return d;
+
+
+// }
+
+// console.log(call(fun, user2, "maha", "india"));
+
+function call(func, thisArg, args) {
+    if (typeof func !== "function") {
+        throw new TypeError("func must be a function");
     }
 
+    if (args === undefined) {
+        args = [];
+    } else if (typeof args !== "array") {
+        throw new TypeError("args must be an array");
+    }
 
+    const boundFunc = function() {
+        return func.apply(thisArg, args);
+    };
 
+    return boundFunc;
 }
 
-
+// console.log(call(fun, user2, ["maha", "india"]));
 
 
 
@@ -67,3 +96,23 @@ function call(fn, thisobj, ...args) {
 // bind
 // let h = fun.bind(user2, "maha", "india")
 // console.log(h());
+
+// custom apply
+function apply(func, thisArg, ...args) {
+    if (typeof func !== "function") {
+        throw new TypeError("func must be a function");
+    }
+
+    if (args === undefined) {
+        args = [];
+    } else if (typeof args !== "array") {
+        throw new TypeError("args must be an array");
+    }
+
+    const newArgs = args.slice();
+    newArgs.unshift(thisArg);
+
+    return func.apply(null, newArgs);
+}
+
+console.log(apply(fun, user2, ["maha", "india"]));
