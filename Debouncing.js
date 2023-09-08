@@ -41,13 +41,13 @@ function throttle(fn, delay) {
 
     let timer;
 
-    //
+
     return function(...args) {
         if (timer) {
             clearTimeout(timer);
 
         }
-        setTimeout(() => {
+        timer = setTimeout(() => {
             console.log("throttle");
             fn();
             console.log(args);
