@@ -33,4 +33,6 @@ const promiseallpolyfill = (promisearray) => {
 
 promiseallpolyfill(promisearray).then((data) => {
     console.log(data);
+}).catch((error) => {
+    console.log(error);
 });
