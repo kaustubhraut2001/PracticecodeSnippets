@@ -294,4 +294,79 @@ function validparenthesis2(str) {
     return stack.length > 0 ? false : true;
 }
 
-console.log(validparenthesis2("{[]}"));
+//console.log(validparenthesis2("{[]}"));
+
+
+// detect cycle in linked list
+
+function detectcycle(head) {
+    let slow = head;
+    let fast = head;
+
+    while (fast !== null && fast.next !== null) {
+        slow = slow.next;
+        fast = fast.next.next;
+
+        if (slow === fast) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+//console.log(detectcycle([3, 2, 0, -4]));
+
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
+
+    add(data) {
+        const newNode = new Node(data);
+        if (!this.head) {
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            while (current.next) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+    }
+
+    detectCycle() {
+        let slow = this.head;
+        let fast = this.head;
+
+        while (fast && fast.next) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow === fast) {
+                return true; // Cycle detected
+            }
+        }
+
+        return false; // No cycle detected
+    }
+}
+
+// Example usage:
+const list = new LinkedList();
+list.add(1);
+list.add(2);
+list.add(3);
+list.add(4);
+
+// Create a cycle
+list.head.next.next.next.next = list.head.next;
+
+console.log("Cycle detected:", list.detectCycle()); // Output: true
