@@ -240,7 +240,7 @@ function ispalendrome(nums) {
 
 }
 
-console.log(ispalendrome(122));
+//console.log(ispalendrome(122));
 
 function stringpalendrome(str) {
     let orinal = str;
@@ -248,4 +248,50 @@ function stringpalendrome(str) {
 
 }
 
-console.log(stringpalendrome("1245"));
+//console.log(stringpalendrome("1245"));
+
+//valid parenthesis
+
+function validparenthesis(str) {
+    let stack = [];
+
+    for (let i = 0; i < str.length; i++) {
+        let n = stack.length;
+        let top = stack[n - 1];
+        if (str[i] === '(' || str[i] === '{' || str[i] === '[') {
+            stack.push(str[i]);
+
+        } else if (
+
+            (str[i] === '}' && top === '{') || (str[i] === ')' && top === '(') || (str[i] === ']' && top === '[')
+
+        ) {
+            stack.unshift();
+
+
+        }
+
+    }
+
+    return stack.length > 0 ? false : true;
+
+
+}
+
+function validparenthesis2(str) {
+    let stack = [];
+
+    for (let i = 0; i < str.length; i++) {
+        let n = stack.length;
+        let top = stack[n - 1];
+        if (str[i] === '(' || str[i] === '{' || str[i] === '[') {
+            stack.push(str[i]);
+        } else if ((str[i] === '}' && top === '{') || (str[i] === ')' && top === '(') || (str[i] === ']' && top === '[')) {
+            stack.pop();
+        }
+    }
+
+    return stack.length > 0 ? false : true;
+}
+
+console.log(validparenthesis2("{[]}"));
