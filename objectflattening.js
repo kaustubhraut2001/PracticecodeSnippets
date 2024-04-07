@@ -221,3 +221,31 @@ function dummy2() {
 }
 
 //console.log(throttle(dummy2, 3000));
+
+// palendrome
+
+function ispalendrome(nums) {
+    let rev = 0;
+    let original = nums;
+
+    while (nums > 0) {
+        let rem = nums % 10;
+        rev = rev * 10 + rem;
+        nums = Math.floor(nums / 10);
+
+
+    }
+
+    return rev === original;
+
+}
+
+console.log(ispalendrome(122));
+
+function stringpalendrome(str) {
+    let orinal = str;
+    return orinal === str.split("").reverse().join("");
+
+}
+
+console.log(stringpalendrome("1245"));
